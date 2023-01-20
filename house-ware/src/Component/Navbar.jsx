@@ -4,6 +4,7 @@ import { Icon, SearchIcon } from "@chakra-ui/icons";
 import { Link as routerLink } from 'react-router-dom'
 import logo from "./logo.png";
 import { FaRegHeart, FaCartArrowDown,FaUserAlt } from "react-icons/fa";
+import SignupModal from "./SignupModal";
 const Navbar = () => {
   return (
     <Box bg="white" w="100%" p={2} color="black">
@@ -14,7 +15,7 @@ const Navbar = () => {
         <Flex columnGap={20}>
           <Flex pl={10} >
           <Icon as={FaUserAlt} fontSize={22}></Icon>
-          <Text>SignIn/Register</Text>
+          <SignupModal/>
           </Flex>
           <Flex>
             <Icon as={FaRegHeart} fontSize={22}></Icon>
