@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Card,
@@ -8,15 +8,20 @@ import {
   Image,
   Stack,
   Text,
+
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { cartContext } from "./CartcontextProvider";
 const Productitem = ({
   title,
+  id,
 link,
-//   brand,
   price,
-//   cart,
-//   setCartDispatch,
+  cart,
+
 }) => {
+const {Setcartitem}=useContext(cartContext)
+
   return (
     <Card maxW="xl">
       <CardBody>
@@ -30,11 +35,12 @@ link,
           <Text color="blue.600" fontSize="2xl">
             Rs.{price}
           </Text>
+          <Link  to={`/singal/${id}`} >More Details</Link>
         </Stack>
       </CardBody>
         <Center>
         <Button  mb={4}_hover={{color:"red", bg:'green'}}
-            colorScheme="blue"
+            colorScheme="blue" onClick={()=>{Setcartitem(cart)}}
           >
             Add to cart
           </Button>

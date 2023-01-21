@@ -4,7 +4,6 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
     Stack,
     Link,
     Button,
@@ -12,8 +11,11 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { AuthContext } from '../Component/AuthContextProvider';
   
   export default function Loginup({setToogle}) {
+const {Login}=useContext(AuthContext)
     return (
       <Flex
         align={'center'}
@@ -43,10 +45,9 @@ import {
                 <Button
                   bg={'blue.400'}
                   color={'white'}
-            
                   _hover={{
                     bg: 'blue.500',
-                  }}>
+                  }} onClick={Login}>
                   Sign in
                 </Button>
               </Stack>
