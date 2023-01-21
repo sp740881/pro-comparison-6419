@@ -7,8 +7,8 @@ import { FaRegHeart, FaCartArrowDown,FaUserAlt } from "react-icons/fa";
 import SignupModal from "./SignupModal";
 const Navbar = () => {
   return (
-    <Box bg="white" w="100%" p={2} color="black">
-      <Flex>
+    <Box  bg="white" w="100%" p={2} color="black">
+      <Flex >
         <Image w="60" h="10" pr={20} src={logo}></Image>
         <Input bg="#dddddd" placeholder="Input text here"></Input>
         <IconButton aria-label="Search database" icon={<SearchIcon />} />
