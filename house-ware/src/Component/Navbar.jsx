@@ -1,11 +1,19 @@
-import React from "react";
-import { Box, Text, Flex, Image, Input, IconButton, Link, Center } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
+import { Box, Text, Flex, Image, Input, IconButton, Link, Center, Badge } from "@chakra-ui/react";
 import { Icon, SearchIcon } from "@chakra-ui/icons";
 import { Link as routerLink } from 'react-router-dom'
 import logo from "./logo.png";
 import { FaRegHeart, FaCartArrowDown,FaUserAlt } from "react-icons/fa";
 import SignupModal from "./SignupModal";
+import { cartContext } from "./CartcontextProvider";
 const Navbar = () => {
+
+const {cart}= useContext(cartContext);
+const [cartItem,setCart]= useState([]);
+useEffect(() => {
+  setCart(cart);
+}, [cart])
+
   return (
     <Box  bg="white" w="100%" p={2} color="black">
       <Flex >
@@ -21,9 +29,16 @@ const Navbar = () => {
             <Icon as={FaRegHeart} fontSize={22}></Icon>
             <Text>Wishlist</Text>
           </Flex>
-          <Flex>
+          <Flex alignItems='center'
+          >
+            <Link as={routerLink} to="/cart" >
             <Icon as={FaCartArrowDown} fontSize={22}></Icon>
+           
+             </Link>
             <Text>Cart</Text>
+            <Badge variant='solid' colorScheme='green'>
+               {cartItem.length}
+                  </Badge>
           </Flex>
         </Flex>
       </Flex>
