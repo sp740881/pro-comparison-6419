@@ -15,17 +15,16 @@ import {
     Text,
     useColorModeValue,
     Link,
+    useToast,
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   
   export default function SignupCard({setToogle}) {
     const [showPassword, setShowPassword] = useState(false);
-  
+    const toast = useToast()
     return (
       <Flex
-        // minH={'100vh'}
-        // align={'center'}
        
         bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack spacing={2} maxW={'lg'} py={2} px={6}>
@@ -73,7 +72,17 @@ import {
                 </InputGroup>
               </FormControl>
               <Stack spacing={10} pt={2}>
-                <Button
+                <Button onClick={() =>
+        toast({
+          title: 'Account created successfully.',
+          // description: "We've created your account for you.",
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        position: 'top-right',
+
+        })
+      }
                   loadingText="Submitting"
                   size="lg"
                   bg={'blue.400'}

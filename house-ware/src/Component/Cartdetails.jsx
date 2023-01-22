@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { cartContext } from "./CartcontextProvider";
 const Productitem = () => {
   const {cart,Setcartitem}=useContext(cartContext)
+  console.log(cart)
 return <>
 <Center><Text color="Green" bg="yellow" size="xl" >Cart Items</Text></Center>
 <Grid

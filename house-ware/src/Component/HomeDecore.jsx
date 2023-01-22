@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from "axios"
 import { useEffect } from 'react'
 import Productitem from './Productitem'
+import LoginToast from '../Account/LoginToast'
 const HomeDecore = () => {
 const [item,setitem]=useState([])
 const[totalpage,settotal]=useState(0)
@@ -13,7 +14,7 @@ const [ord,setorder]=useState("asc")
 
 const fetchData=async(page,ord)=>{
   setloading(true)
-let res=await axios.get(`https://lovely-bee-waders.cyclic.app/Products?_limit=32&_page=${page}&_sort=price&_order=${ord}`)
+let res=await axios.get(`https://lovely-bee-waders.cyclic.app/Products?_limit=48&_page=${page}&_sort=price&_order=${ord}`)
 setitem(res.data)
 setloading(false)
 settotal(Number(res.headers["x-total-count"])
@@ -65,8 +66,14 @@ const HandlepagePlus=()=>{
       <Box>
       <Flex justifyContent="space-evenly"  >
        <Button bg="white" >Sort by :  Popular</Button> |
-       <Button bg="white"  onClick={()=>{setorder("asc")}} >Price : Low to High</Button> |
-       <Button bg="white" onClick={()=>{setorder("desc")}} >Price :  High to Low</Button> |
+       <Button bg="white"  onClick={()=>{setorder("asc")}} >
+        {/* Price : Low to High */}
+        <LoginToast msg={"Product sorted by Low to High price"} msg2={"Price : Low to High"} pos={'top'} />
+       </Button> |
+       <Button bg="white" onClick={()=>{setorder("desc")}} >
+       <LoginToast msg={"Product sorted by High to Low price"} msg2={"Price :  High to Low"} pos={'top'} />
+        {/* Price :  High to Low */}
+        </Button> |
        <Button bg="white" >Discount</Button> 
       </Flex>
       <Grid
@@ -84,7 +91,7 @@ const HandlepagePlus=()=>{
   <Center>
   <Button isDisabled={page==1} onClick={HandlepagePlus} >Previous</Button>
     <Button>{page}</Button>
-    <Button isDisabled={page==Math.ceil(totalpage/16)} onClick={HandlepageSub} >Next</Button>
+    <Button isDisabled={page==Math.ceil(totalpage/48)} onClick={HandlepageSub} >Next</Button>
   </Center>
       </Box>
     </Flex>
