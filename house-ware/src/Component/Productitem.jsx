@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { cartContext } from "./CartcontextProvider";
+import LoginToast from "../Account/LoginToast";
 const Productitem = ({
   title,
   id,
@@ -40,9 +41,9 @@ const {Setcartitem}=useContext(cartContext)
       </CardBody>
         <Center>
         <Button  mb={4}_hover={{color:"red", bg:'green'}}
-            colorScheme="blue" onClick={()=>{Setcartitem(cart)}}
+            colorScheme="blue" onClick={()=>{Setcartitem({...cart,quantity:1})}}
           >
-            Add to cart
+             <LoginToast msg={"Product added into cart"} msg2={"Add to Cart"} pos={'top-right'} />
           </Button>
         </Center>
     </Card>

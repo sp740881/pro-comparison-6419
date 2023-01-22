@@ -13,6 +13,7 @@ import {
   } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AuthContext } from '../Component/AuthContextProvider';
+import LoginToast from './LoginToast';
   
   export default function Loginup({setToogle}) {
 const {Login}=useContext(AuthContext)
@@ -48,7 +49,7 @@ const {Login}=useContext(AuthContext)
                   _hover={{
                     bg: 'blue.500',
                   }} onClick={Login}>
-                  Sign in
+                <LoginToast msg={"Login Successfully"} msg2={"SignIn"} pos={'top-right'} />
                 </Button>
               </Stack>
             </Stack>
