@@ -1,5 +1,5 @@
 # pro-comparison-6419
-IA-Mohsin Iqbal sir
+<h3> mohsin.iqbal@masaischool.com</h3>
 Landing page
 signup ang login page
 Home decore page
